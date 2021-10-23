@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebCampBackendNew</title>
+  </head>
+
+
+  <body>
+
+    <h1>Books</h1>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Body</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @lists.each do |list| %>
+        <tr>
+          <td><%= list.title %></td>
+          <td><%= list.body %></td>
+          <td><%= link_to "Show", list_path(list)%></td>
+          <td><%= link_to "Edit", edit_list_path(list) %></td>
+          <td><%= link_to "Delete", list_path(list),method: :delete %></td>
+        </tr>
+        <% end %>
+          
+      </tbody>
+    </table>
+    
+    <%if @list.errors.any? %>
+      <%= @list.errors.count %>件のエラーが発生しました。
+      <% @list.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
+    
+    <h2>New book</h2>
+    <%= form_with model:@list, local:true do |f| %>
+
+      <div class="field">
+        <%= f.text_field :title %>
+      </div>
+    
+      <div class="field">
+        <%= f.text_area :body %>
+      </div>
+    
+      <div class="actions">
+        <%= f.submit 'Create Book' %>
+      </div>
+    <% end %>
+  </body>
+</html>

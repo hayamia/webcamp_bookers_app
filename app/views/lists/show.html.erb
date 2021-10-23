@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebCampBookers</title>
+  </head>
+
+  <body>
+    
+    <% if flash[:notice] %>
+      <%= notice %>
+    <% end %>
+
+    <p>
+      <strong>Title:</strong>
+      <%= @list.title %>
+    </p>
+    
+    <p>
+      <strong>Body:</strong>
+      <%= @list.body %>
+    </p>
+    
+    <%= link_to "Edit", edit_list_path(@list) %>
+    <%= link_to "Back", lists_path %>
+
+  </body>
+</html>

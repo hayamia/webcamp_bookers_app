@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebCampBookers</title>
+  </head>
+
+  <body>
+    
+    <% if flash[:notice] %>
+      <%= notice %>
+    <% end %>
+    
+    <% if @list.errors.any? %>
+      <%= @list.errors.count %>件のエラーが発生しました
+      <% @list.errors.full_messages.each do |message| %>
+        <%= message %>
+      <% end %>
+    <% end %>
+    
+    <h1>Editing Book</h1>
+
+    <%= form_with model:@list, local: true do |f| %>
+      <h4>Title</h4>
+      <%= f.text_field :title %>
+      
+      <h4>Body</h4>
+      <%= f.text_area :body %>
+      
+      <%= f.submit '保存' %>
+    
+      <%= link_to "Show", list_path(@list)%>  | 
+      <%= link_to "Back", lists_path %>
+      
+    <% end %>
+  </body>
+</html>
