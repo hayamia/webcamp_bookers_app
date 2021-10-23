@@ -25,7 +25,7 @@
           <td><%= list.body %></td>
           <td><%= link_to "Show", list_path(list)%></td>
           <td><%= link_to "Edit", edit_list_path(list) %></td>
-          <td><%= link_to "Delete", list_path(list),method: :delete %></td>
+          <td><%= link_to "Destroy", list_path(list),method: :delete %></td>
         </tr>
         <% end %>
           
@@ -33,7 +33,7 @@
     </table>
     
     <%if @list.errors.any? %>
-      <%= @list.errors.count %>件のエラーが発生しました。
+      <%= @list.errors.count %>errors prohibited this book from being saved:
       <% @list.errors.full_messages.each do |message| %>
         <%= message %>
       <% end %>
@@ -51,7 +51,7 @@
       </div>
     
       <div class="actions">
-        <%= f.submit 'Create Book' %>
+        <%= f.submit 'Create List' %>
       </div>
     <% end %>
   </body>
